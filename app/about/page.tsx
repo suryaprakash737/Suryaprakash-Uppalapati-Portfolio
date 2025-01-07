@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
-import { FaFilePdf, FaUniversity, FaBriefcase, FaStar, FaCheckCircle } from "react-icons/fa";
+
+import { FaBriefcase, FaStar, FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 

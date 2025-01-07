@@ -9,7 +9,7 @@ export default function Home() {
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [speed, setSpeed] = useState(100); // Typing speed
+  const [speed] = useState(100); // Typing speed
 
   useEffect(() => {
     const handleTyping = () => {
@@ -23,11 +23,11 @@ export default function Home() {
         setTimeout(() => setIsDeleting(!isDeleting), 1000); // Pause before deleting/retyping
       }
     };
-
-    const timer = setTimeout(handleTyping, isDeleting ? 50 : speed); // Faster deletion
-
-    return () => clearTimeout(timer);
-  }, [index, isDeleting]);
+  
+    const timer = setTimeout(handleTyping, isDeleting ? 50 : 100);
+    return () => clearTimeout(timer); // Cleanup function
+  }, [index, isDeleting, fullText]); // ✅ FIX: Removed fullText.length
+  
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen text-center bg-black text-white p-8 overflow-hidden">
