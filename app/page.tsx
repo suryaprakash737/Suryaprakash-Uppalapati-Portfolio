@@ -51,15 +51,31 @@ export default function Home() {
       />
 
       {/* Cyberpunk Hero Section */}
-      <motion.h1
-        className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500 drop-shadow-xl animate-glitch"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        👋 Welcome to the Future, <br />
-        I&apos;m <span className="text-cyan-300">Suryaprakash Uppalapati</span>
-      </motion.h1>
+      
+      <motion.div className="relative text-center">
+  {/* Under Development Banner Above Title */}
+  <motion.div
+  className="absolute -top-12 left-[48%] transform -translate-x-[48%] bg-yellow-500 text-black px-6 py-2 rounded-lg text-sm md:text-base font-bold shadow-xl flex items-center space-x-2"
+  animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.1, 1] }}
+  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+>
+  🚀 <span>This Portfolio is Under Development – Stay Tuned! </span> ⚡
+</motion.div>
+
+
+
+  {/* Main Title */}
+  <motion.h1
+    className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500 drop-shadow-xl"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+  >
+    👋 Welcome to My Portfolio!! <br />
+    I&apos;m <span className="text-cyan-300">Suryaprakash Uppalapati</span>
+  </motion.h1>
+</motion.div>
+
 
       {/* AI Terminal-Like Typing Effect (Now Loops Infinitely) */}
       <motion.p
@@ -90,6 +106,7 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
+      
     </main>
   );
 }

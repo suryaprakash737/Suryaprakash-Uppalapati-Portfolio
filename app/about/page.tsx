@@ -2,29 +2,38 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FaFilePdf, FaUniversity, FaBriefcase, FaStar, FaCheckCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
+
 
 export default function About() {
   const [showResume, setShowResume] = useState(false);
 
   return (
+
+
+    
     <main className="max-w-6xl mx-auto p-8 text-white">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center text-center p-10 bg-gradient-to-br from-blue-800 to-purple-800 rounded-lg shadow-lg">
-        {/* Floating Profile Image */}
-        <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg transform transition hover:scale-105">
-          <Image src="/profile_pic.jpg" alt="Profile Picture" width={192} height={192} className="object-cover" />
-        </div>
-        <h1 className="text-5xl font-extrabold mt-6 animate-pulse">
-          👋 Hello, I&apos;m <span className="text-yellow-400">Suryaprakash Uppalapati</span>
-        </h1>
-        <p className="text-lg text-gray-300 mt-2">
-          🚀 Machine Learning Engineer | AI Innovator
-        </p>
-        <p className="mt-4 text-gray-200 leading-relaxed max-w-3xl">
-          Passionate about **AI-driven innovation**, solving complex **real-world problems**, and crafting **cutting-edge machine learning models**.  
-          Currently advancing my expertise at <span className="font-bold text-yellow-400">George Mason University</span>.
-        </p>
-      </section>
+      
+      {/* Hero Section */}
+<section className="relative flex flex-col items-center text-center p-10 bg-gradient-to-br from-blue-800 to-purple-800 rounded-lg shadow-lg">
+
+{/* Under Development Badge */}
+<motion.div
+  className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black px-8 py-2 rounded-lg text-sm md:text-base font-bold shadow-xl flex items-center space-x-2 w-auto whitespace-nowrap"
+  animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.1, 1] }}
+  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+>
+  🚀 <span>This Portfolio is Under Development – Stay Tuned for ML Models & Chatbot Assistance!</span> ⚡
+</motion.div>
+
+{/* Main Title */}
+<h1 className="text-5xl font-extrabold mt-6 animate-pulse">
+  👋 Hello, I&apos;m <span className="text-yellow-400">Suryaprakash Uppalapati</span>
+</h1>
+
+</section>
+
 
       {/* Why Hire Me Section */}
       <section className="mt-12 bg-gray-900 p-6 rounded-lg shadow-lg">
