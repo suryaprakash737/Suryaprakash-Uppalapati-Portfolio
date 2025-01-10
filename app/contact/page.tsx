@@ -6,6 +6,7 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaFilePdf } from "react-icons/fa";
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,7 +15,22 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    // Simulating form submission (Replace with an API endpoint for real functionality)
+    setStatus("Sending...");
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await res.json();
+    if (res.ok) {
+      setStatus("Message sent successfully! ✅");
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      setStatus(`Error: ${result.error}`);
+    }
+
     setTimeout(() => setSubmitted(false), 3000);
   };
 
@@ -37,6 +53,7 @@ export default function Contact() {
             required
             className="w-full p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
+            value={formData.name}
           />
           <input
             type="email"
@@ -45,6 +62,7 @@ export default function Contact() {
             required
             className="w-full p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
+            value={formData.email}
           />
           <textarea
             name="message"
@@ -53,6 +71,7 @@ export default function Contact() {
             required
             className="w-full p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
+            value={formData.message}
           ></textarea>
           <button
             type="submit"
@@ -64,6 +83,7 @@ export default function Contact() {
             {submitted ? "Message Sent! ✅" : "Send Message"}
           </button>
         </form>
+        {status && <p className="mt-4 text-green-300">{status}</p>}
       </section>
 
       {/* Social Links */}
