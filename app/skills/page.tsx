@@ -2,79 +2,23 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { motion } from "framer-motion";
+import { programmingSkills, tools, certifications } from "@/data/skills";
+
+// Import AOS if you're using it (you'll need to install it first)
+// npm install aos
+let AOS;
+if (typeof window !== 'undefined') {
+  AOS = require('aos');
+  require('aos/dist/aos.css');
+}
 
 export default function Skills() {
   useEffect(() => {
-    AOS.init({ duration: 1200, once: true });
+    if (AOS) {
+      AOS.init({ duration: 1200, once: true });
+    }
   }, []);
-
-  // Skills Data
-  const skills = [
-    { name: "Python", level: "90%", color: "bg-green-500" },
-    { name: "C++", level: "75%", color: "bg-blue-400" },
-    { name: "SQL", level: "85%", color: "bg-yellow-500" },
-  ];
-
-  const tools = [
-    { name: "Jupyter Notebook", level: "90%", color: "bg-blue-500" },
-    { name: "AWS Sagemaker", level: "80%", color: "bg-red-500" },
-    { name: "VS Code", level: "70%", color: "bg-gray-500" },
-  ];
-
-  // Certifications Data (Includes the 3 missing ones)
-  const certifications = [
-    {
-      title: "Supervised Machine Learning",
-      provider: "DeepLearning.AI",
-      link: "https://www.coursera.org/account/accomplishments/verify/2IUSEAXSMMYQ",
-      image: "/deeplearninglogo.jpeg",
-    },
-    {
-      title: "Introducing Generative AI",
-      provider: "Udacity",
-      link: "https://www.udacity.com/certificate/e/159f2a22-769c-11ef-bbaf-531a1a6740b4",
-      image: "/udacitylogo.jpeg",
-    },
-    {
-      title: "AWS Academy Machine Learning Foundations",
-      provider: "AWS Academy",
-      link: "https://www.credly.com/badges/c314fb64-d2be-4aa9-8e77-fa5e9069afce?source=linked_in_profile",
-      image: "/awslogo.jpeg",
-    },
-    {
-      title: "AWS Academy Cloud Foundations",
-      provider: "AWS Academy",
-      link: "https://www.credly.com/badges/ae25ff37-eb6e-4410-b6a6-bbf7a46f6714/linked_in_profile",
-      image: "/awslogo.jpeg",
-    },
-    {
-      title: "PCAP Programming Essentials in Python",
-      provider: "Python Institute",
-      link: "https://www.pythoninstitute.org/certification/pcap/",
-      image: "/ciscologo.jpeg",
-    },
-    {
-      title: "Deep Learning Specialization",
-      provider: "DeepLearning.AI",
-      link: "https://www.coursera.org/specializations/deep-learning",
-      image: "/deeplearninglogo.jpeg",
-    },
-    {
-      title: "TensorFlow Developer Certificate",
-      provider: "TensorFlow",
-      link: "https://www.tensorflow.org/certificate",
-      image: "/tensorflowlogo.png",
-    },
-    {
-      title: "Google Data Analytics Certificate",
-      provider: "Google",
-      link: "https://www.coursera.org/professional-certificates/google-data-analytics",
-      image: "/googlelogo.png",
-    },
-  ];
 
   return (
     <main className="max-w-6xl mx-auto p-8 text-white">
@@ -86,7 +30,7 @@ export default function Skills() {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500">
-          My Technical Skills 🚀
+          My Technical Skills
         </h1>
         <p className="mt-4 text-lg text-gray-200">
           Discover my expertise in AI, Machine Learning, and Data Science.
@@ -95,12 +39,12 @@ export default function Skills() {
 
       {/* Skills Section */}
       <section id="skills" className="mt-12">
-        <h2 className="text-4xl font-bold text-center mb-6 text-blue-400">⚡ Technical Skills</h2>
+        <h2 className="text-4xl font-bold text-center mb-6 text-blue-400">Technical Skills</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {/* Programming Languages */}
           <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
             <h3 className="text-2xl font-semibold mb-3 text-yellow-300">Programming Languages</h3>
-            {skills.map((skill, index) => (
+            {programmingSkills.map((skill, index) => (
               <motion.div key={index} className="mb-2">
                 <p className="text-lg">{skill.name}</p>
                 <div className="w-full bg-gray-700 rounded-full h-5">
@@ -141,7 +85,7 @@ export default function Skills() {
 
       {/* Certifications Section */}
       <section className="mt-12">
-        <h2 className="text-4xl font-bold text-center mb-6 text-green-400">🏆 Certifications</h2>
+        <h2 className="text-4xl font-bold text-center mb-6 text-green-400">Certifications</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
             <motion.div
@@ -150,7 +94,7 @@ export default function Skills() {
               data-aos="zoom-in"
               whileHover={{ scale: 1.05 }}
             >
-              <a href={cert.link} target="_blank">
+              <a href={cert.link} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={cert.image}
                   alt={cert.title}

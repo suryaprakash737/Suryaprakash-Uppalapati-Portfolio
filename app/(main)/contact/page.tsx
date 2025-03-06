@@ -37,7 +37,7 @@ export default function Contact() {
   return (
     <main className="max-w-5xl mx-auto p-8 text-white">
       {/* Header */}
-      <section className="text-center bg-gradient-to-r from-blue-500 to-purple-500 p-10 rounded-lg shadow-lg">
+      <section id = "contact" className="text-center bg-gradient-to-r from-blue-500 to-purple-500 p-10 rounded-lg shadow-lg">
         <h1 className="text-4xl font-bold">Get In Touch</h1>
         <p className="mt-4 text-lg">Feel free to reach out for collaborations, job opportunities, or just a chat!</p>
       </section>
