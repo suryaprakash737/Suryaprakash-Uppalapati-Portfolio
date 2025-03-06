@@ -5,7 +5,14 @@ import Image from "next/image";
 import { projects } from "@/data/projects";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+// Define the params type properly for client components
+type ProjectPageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function ProjectPage({ params }: ProjectPageProps) {
   const [project, setProject] = useState(projects[0]);
 
   useEffect(() => {
