@@ -1,7 +1,9 @@
-// Remove the "use client" directive to make this a server component
+// app/projects/[slug]/page.tsx
+// Remove the "use client" directive
 import { projects } from "@/data/projects";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 
+// Use the proper typing for page props in Next.js App Router
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   // Find the project on the server side
   const project = projects.find(p => 
