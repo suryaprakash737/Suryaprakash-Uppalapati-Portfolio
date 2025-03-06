@@ -1,28 +1,12 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
+// Remove the "use client" directive to make this a server component
 import { projects } from "@/data/projects";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 
-export default function ProjectPage({ 
-  params 
-}: { 
-  params: { slug: string } 
-}) {
-  const [project, setProject] = useState(projects[0]);
-
-  useEffect(() => {
-    // Find the project based on the slug (using title for simplicity)
-    // In a real app, you might want to use an ID or a proper slug field
-    const foundProject = projects.find(p => 
-      p.title.toLowerCase().replace(/\s+/g, '-') === params.slug
-    );
-    
-    if (foundProject) {
-      setProject(foundProject);
-    }
-  }, [params.slug]);
+export default function ProjectPage({ params }: { params: { slug: string } }) {
+  // Find the project on the server side
+  const project = projects.find(p => 
+    p.title.toLowerCase().replace(/\s+/g, '-') === params.slug
+  ) || projects[0];
 
   if (!project) {
     return <div className="text-center p-12">Project not found</div>;
