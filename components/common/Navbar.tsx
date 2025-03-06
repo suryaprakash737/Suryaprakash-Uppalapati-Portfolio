@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed w-full bg-gray-900/80 backdrop-blur-md z-50">
-      <div className="max-w-6xl mx-auto px-4 py-4">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <ul className="flex space-x-6">
           <li>
             {isHomePage ? (
@@ -20,7 +20,7 @@ export default function Navbar() {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
                 activeClass="text-cyan-400"
               >
                 Home
@@ -28,7 +28,7 @@ export default function Navbar() {
             ) : (
               <Link 
                 href="/"
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
               >
                 Home
               </Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
                 activeClass="text-cyan-400"
               >
                 About
@@ -50,7 +50,7 @@ export default function Navbar() {
             ) : (
               <Link 
                 href="/#about"
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
               >
                 About
               </Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
                 activeClass="text-cyan-400"
               >
                 Skills
@@ -72,7 +72,7 @@ export default function Navbar() {
             ) : (
               <Link 
                 href="/#skills"
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
               >
                 Skills
               </Link>
@@ -86,7 +86,7 @@ export default function Navbar() {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
                 activeClass="text-cyan-400"
               >
                 Projects
@@ -94,7 +94,7 @@ export default function Navbar() {
             ) : (
               <Link 
                 href="/#projects"
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
               >
                 Projects
               </Link>
@@ -108,7 +108,7 @@ export default function Navbar() {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
                 activeClass="text-cyan-400"
               >
                 Contact
@@ -116,29 +116,32 @@ export default function Navbar() {
             ) : (
               <Link 
                 href="/#contact"
-                className="cursor-pointer hover:text-cyan-400 transition-colors"
+                className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
               >
                 Contact
               </Link>
             )}
           </li>
           <li>
-          <Link 
-  href="/use-cases"
-  className="cursor-pointer hover:text-cyan-400 transition-colors"
->
-  Use Cases
-</Link>
+            <Link 
+              href="/use-cases"
+              className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
+            >
+              Use Cases
+            </Link>
           </li>
           <li>
             <Link 
               href="/models"
-              className="cursor-pointer hover:text-cyan-400 transition-colors"
+              className="cursor-pointer hover:text-cyan-400 transition-colors text-xl font-bold"
             >
               ML Models
             </Link>
           </li>
         </ul>
+        <span className="text-white font-bold text-xl ml-auto pr-4">
+          Suryaprakash Uppalapati
+        </span>
       </div>
     </nav>
   );
