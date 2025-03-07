@@ -36,7 +36,7 @@ export default function Chatbot() {
   };
 
   // Handle sending a message
-  const sendMessage = (e) => {
+  const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
