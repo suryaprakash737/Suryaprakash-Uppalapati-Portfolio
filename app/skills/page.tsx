@@ -5,18 +5,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { programmingSkills, tools, certifications } from "@/data/skills";
 
-// Import AOS if you're using it (you'll need to install it first)
-// npm install aos
-let AOS;
+import type AOS from 'aos';
+let aosInstance: typeof AOS | undefined;
 if (typeof window !== 'undefined') {
-  AOS = require('aos');
+  // Use dynamic import to avoid SSR issues
+  aosInstance = require('aos');
   require('aos/dist/aos.css');
 }
 
 export default function Skills() {
   useEffect(() => {
-    if (AOS) {
-      AOS.init({ duration: 1200, once: true });
+    if (aosInstance) {
+      aosInstance.init({ duration: 1200, once: true });
     }
   }, []);
 
